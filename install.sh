@@ -8,6 +8,10 @@ COLLABORATOR=champierre
 EXTENSION_DESCRIPTION="Speech Recognition Blocks."
 EXTENSION_DIR=node_modules/${EXTENSION_ID}
 
+cd node_modules/scratch-vm
+npm install openai
+cd ../../
+
 mkdir -p node_modules/scratch-vm/src/extensions/scratch3_${EXTENSION_ID}
 cp ${EXTENSION_DIR}/scratch-vm/src/extensions/scratch3_${EXTENSION_ID}/index.js node_modules/scratch-vm/src/extensions/scratch3_${EXTENSION_ID}/
 mv node_modules/scratch-vm/src/extension-support/extension-manager.js node_modules/scratch-vm/src/extension-support/extension-manager.js_orig
