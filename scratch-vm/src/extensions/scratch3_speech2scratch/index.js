@@ -170,7 +170,7 @@ class Scratch3Speech2Scratch {
         this._mediaRecorder.stop();
 
         // Stop recording after 1 hour
-        if (this._audioChunks.length > 6) {
+        if (this._audioChunks.length > 6 * 60) {
           clearInterval(this._transcriveInterval);
           this.runtime.emitMicListening(false);
           return;
