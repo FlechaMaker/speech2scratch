@@ -1,6 +1,6 @@
 {
   "name": "speech2scratch",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Recognize speech and convert to text.",
   "scripts": {
     "build": "rimraf ./dist && mkdirp ./dist && node ./scripts/build.js --name=speech2scratch --block=\"./scratch-vm/src/extensions/scratch3_speech2scratch\" --entry=\"./scratch-gui/src/lib/libraries/extensions/speech2scratch\" --gui=\"../\" --output=\"./dist\""

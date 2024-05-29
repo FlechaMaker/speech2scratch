@@ -52,6 +52,7 @@ class Scratch3Speech2Scratch {
     this._transcriveInterval = null;
     this._mediaRecorder = null;
     this._audioChunks = [];
+    this._player = null;
     this._openai = null;
 
     // Initialize audio recorder
@@ -130,6 +131,11 @@ class Scratch3Speech2Scratch {
           text: "音声再生",
         },
         {
+          opcode: "stopRecording",
+          blockType: BlockType.COMMAND,
+          text: "音声停止",
+        },
+        {
           opcode: "getSpeech",
           blockType: BlockType.REPORTER,
           text: "音声の文字起こし",
@@ -204,8 +210,15 @@ class Scratch3Speech2Scratch {
       type: "audio/webm; codecs=opus",
     });
     const audioURL = window.URL.createObjectURL(blob);
-    const audio = new Audio(audioURL);
-    audio.play();
+    this._player = new Audio(audioURL);
+    this._player.play();
+  }
+
+  stopRecording() {
+    if (this._player) {
+      this._player.pause();
+      this._player.currentTime = 0;
+    }
   }
 
   getSpeech() {
